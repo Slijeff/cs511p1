@@ -11,5 +11,6 @@ ssh-add ~/.ssh/shared_rsa
 ####################################################################################
 
 # Start HDFS/Spark worker here
-
+hdfs datanode &
 bash
+

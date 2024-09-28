@@ -16,23 +16,25 @@ RUN ssh-keygen -t rsa -P '' -f ~/.ssh/shared_rsa -C common && \
 ####################################################################################
 
 # Setup HDFS/Spark resources here
-# Install Python and pip
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip and Install PySpark
-# RUN pip3 install --upgrade pip
-# RUN pip3 install pyspark==3.4.1
-
-RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz && \
-    tar -xzf hadoop-3.3.6.tar.gz && \
+###### !!!COMMENT BELOW WHEN RUNNING REAL TESTS #####
+COPY hadoop-3.3.6.tar.gz .
+RUN  tar -xzf hadoop-3.3.6.tar.gz && \
     mv hadoop-3.3.6 /usr/local/hadoop && \
     rm hadoop-3.3.6.tar.gz
+###### !!!COMMENT ABOVE WHEN RUNNING REAL TESTS #####
+
+# RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz && \
+#     tar -xzf hadoop-3.3.6.tar.gz && \
+#     mv hadoop-3.3.6 /usr/local/hadoop && \
+#     rm hadoop-3.3.6.tar.gz
 
 ENV HADOOP_VER=3.3.6
 ENV HADOOP_HOME=/usr/local/hadoop
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 COPY core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml
-COPY hadoop-env.sh $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+# COPY hadoop-env.sh $HADOOP_HOME/etc/hadoop/hadoop-env.sh
