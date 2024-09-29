@@ -30,7 +30,6 @@ ENV HADOOP_VER=3.3.6
 ENV HADOOP_HOME=/usr/local/hadoop
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 COPY core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml
-# COPY hadoop-env.sh $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 
 RUN wget https://archive.apache.org/dist/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz
 RUN tar -xzf spark-3.4.1-bin-hadoop3.tgz && \
