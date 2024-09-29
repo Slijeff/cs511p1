@@ -8,6 +8,9 @@ FROM cs511p1-common
 
 COPY hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 
+COPY sorting.py sorting.py
+COPY part3_caps.csv part3_caps.csv
+
 COPY ./setup-main.sh ./setup-main.sh
 RUN /bin/bash setup-main.sh
 

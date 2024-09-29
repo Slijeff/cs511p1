@@ -40,3 +40,10 @@ RUN tar -xzf spark-3.4.1-bin-hadoop3.tgz && \
 ENV SPARK_VER=3.4.1
 ENV SPARK_HOME=/usr/local/spark
 ENV PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip
+
+RUN pip3 install --upgrade pip
+RUN pip3 install pyspark==3.4.1
