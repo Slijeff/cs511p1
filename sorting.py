@@ -13,7 +13,7 @@ result = df.filter(df["Year"] <= 2023).orderBy(
     desc("Year"), asc("SerialNumber"))
 
 # Show the result (or write it back to HDFS or another storage)
-with open("./output.txt", 'wb') as f:
+with open("./output.txt", 'w') as f:
     for row in result.collect():
         f.write(str(row['Year']) + "," + row['SerialNumber'])
         f.write("\n")
