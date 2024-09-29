@@ -14,9 +14,12 @@ ssh-copy-id -i ~/.ssh/id_rsa -o 'IdentityFile ~/.ssh/shared_rsa' -o StrictHostKe
 ####################################################################################
 
 hdfs namenode -format
+# sleep 5
 hdfs namenode &
+# sleep 5
 
 hdfs datanode &
+# sleep 5
 
 $SPARK_HOME/sbin/start-master.sh &
 $SPARK_HOME/sbin/start-slave.sh spark://main:7077 &

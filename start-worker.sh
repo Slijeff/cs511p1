@@ -9,7 +9,7 @@ ssh-add ~/.ssh/shared_rsa
 
 # DO NOT MODIFY THE ABOVE ##########################################################
 ####################################################################################
-sleep 8
+# sleep 10
 hdfs datanode &
 
 $SPARK_HOME/sbin/start-slave.sh spark://main:7077 &
