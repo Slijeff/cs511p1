@@ -79,7 +79,7 @@ function test_spark_q4() {
 function test_terasorting() {
   # call your program here
   # make sure your program outputs only the result on screen
-  docker-compose -f cs511p1-compose.yaml exec main bash -x -c "
+  docker-compose -f cs511p1-compose.yaml exec main bash -c "
 hdfs dfs -mkdir -p /data && \
 hdfs dfs -put -f part3_caps.csv /data/part3_caps.csv"
 

@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import desc, asc
 
 spark = SparkSession.builder.appName("sorting").getOrCreate()
 spark.sparkContext.setLogLevel('OFF')
@@ -8,7 +9,8 @@ logger.LogManager.getRootLogger().setLevel(logger.Level.OFF)
 df = spark.read.csv("hdfs://main:9000/data/part3_caps.csv",
                     inferSchema=True, header=False).toDF("Year", "SerialNumber")
 # Filter and sort the data
-result = df.filter(df["Year"] <= 2023).orderBy("Year", "SerialNumber")
+result = df.filter(df["Year"] <= 2023).orderBy(
+    desc("Year"), asc("SerialNumber"))
 
 # Show the result (or write it back to HDFS or another storage)
 with open("./output.txt", 'w') as f:
