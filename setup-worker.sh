@@ -15,3 +15,7 @@ chmod 0600 ~/.ssh/authorized_keys
 #
 mkdir /usr/local/hadoop/hdfs
 mkdir /usr/local/hadoop/hdfs/datanode
+
+mkdir -p $SPARK_HOME/conf
+cp $SPARK_HOME/conf/spark-env.sh.template $SPARK_HOME/conf/spark-env.sh
+echo -e 'SPARK_MASTER_HOST=main\nSPARK_PUBLIC_DNS=$(hostname -f)' >>$SPARK_HOME/conf/spark-env.sh
